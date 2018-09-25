@@ -6,7 +6,7 @@ public class Day {
 
 	private String name;
 	
-	private Set<Game> game;
+	private Set<Game> games;
 
 	public String getName() {
 		return name;
@@ -16,12 +16,12 @@ public class Day {
 		this.name = name;
 	}
 
-	public Set<Game> getGame() {
-		return game;
+	public Set<Game> getGames() {
+		return games;
 	}
 
-	public void setGame(Set<Game> game) {
-		this.game = game;
+	public void setGame(Game game) {
+		games.add(game);
 	}
 	
 	

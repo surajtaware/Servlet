@@ -6,7 +6,7 @@ public class Player {
 
 	private String name;
 	
-	private Set<Game> game;
+	private Set<Game> games;
 
 	public String getName() {
 		return name;
@@ -17,11 +17,11 @@ public class Player {
 	}
 
 	public Set<Game> getGame() {
-		return game;
+		return games;
 	}
 
-	public void setGame(Set<Game> game) {
-		this.game = game;
+	public void setGame(Game game) {
+		games.add(game);
 	}
 	
 	

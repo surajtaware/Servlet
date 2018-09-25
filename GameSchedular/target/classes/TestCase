@@ -1,0 +1,89 @@
+-------------------------GameService------------------------------
+1. Null Games cannot be added.
+2. Game name cannot be null.
+3. Two games with same name can't be added.
+4. Valid games should be added.
+
+=============================DayService============================
+1. Null Day cannot be added.
+2. Day name cannot be null.
+3. Two Day with same name can't be added.
+4. Valid Day should be added.
+
+=============================PlayerService===========================
+1. Null Player cannot be added.
+2. Player name cannot be null.
+3. Two Player with same name can't be added.
+4. Valid Player should be added.
+5. Player should have at least  one game.
+
+=============================ReportService============================
+Method : public GameReport gameWiseReport(String gameName);
+		 1. Game name should not be null.
+		 2. Returned GameReport object should not be null if valid argument is passed.
+		 3. If game name is not found it should return null. 
+	
+Method : public PlayerReport playerWiseReport(String playerName);
+		 1. Name parameter can't be null or empty.
+		 2. Returned PlayerReport object should not be null if valid argument is passed.
+		 3. If player is not found it should return null. 
+		
+Method : public DayReport dayWiseReport(String dayName); 
+		1. Name parameter can't be null or empty.
+		2. Returned DayReport object should not be null if valid argument is passed.
+		3. If player is not found it should return null. 
+
+========================GameRepo Test Cases=========================================
+
+Method : public Game save(Game game);
+
+		1. Null Games can't be added.
+		2. Games name can't be null. 
+		3. Two games with same name can't be added.
+		4. Valid games should be stored.
+
+Method : public Game findByName(String name);
+
+		1. Name parameter can't be null or empty.
+		2. Returned Game object should not be null if valid argument is passed.
+		3. If player is not found it should return null. 
+		
+===========================PlayerRepo================================================
+Method Name :- public Player save(Player player);
+
+1. Null Player can't be added.
+2. Player name can't be null. 
+3. Two player with same name can't be added.
+
+Method Name :- public List<Player> findByDayName(String dayName);
+
+1. dayName parameter can't be null or empty.
+2. Returned Player object should not be null if valid argument is passed.
+3. If player is not found it should return null.
+
+Method Name :- public List<Player> findByGamesName(String gameName);
+
+1. gameName parameter can't be null or empty. 
+2. If passed game name is not found it should return null.
+3. If passed game name is found then should return ListOfPlayer on which game has been played.
+
+========================DayRepo Test Cases=========================================
+
+Method Name :- public Day save(Day day);
+
+1. Null Day can't be added.
+2. Day name can't be null. 
+3. Two days with same name can't be added.
+
+Method Name :- public List<Day> findByPlayerName(String playerName);
+
+1. playerName parameter can't be null or empty.
+2. Returned List of days object should not be null if player is present.
+3. If player is not found it should return null.
+
+Method Name :- public List<Day> findByGamesName(String gameName);
+
+1. gameName parameter can't be null or empty. 
+2. If passed game name is not found it should return null.
+3. If passed game name is found then should return ListOfDays on which game has been played.
+ 
