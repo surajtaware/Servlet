@@ -18,28 +18,43 @@ import com.cg.repo.PlayerRepoImpl;
 public class GameRepoTest {
 
 	
-	private GameRepo gameRepo;
+	/*private GameRepo gameRepo;
 	
 	@Before
 	public void init(){
 		
 		gameRepo = new GameRepoImpl();
-	}
+	}*/
 	
 	@Test(expected=NullPointerException.class)
 	public void test_save() {
+		GameRepo gameRepo = new GameRepoImpl();
+		
 		Game game = new Game();
-		gameRepo.save(game);
+		try {
+			gameRepo.save(game);
+		} catch (DuplicateElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Test(expected=NullPointerException.class)
 	public void test_save1() {
+		GameRepo gameRepo = new GameRepoImpl();
 		Game game = null;		
-		gameRepo.save(game);
+		try {
+			gameRepo.save(game);
+		} catch (DuplicateElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Test(expected=DuplicateElementException.class)
-	public void test_save2() {
+	public void test_save2() throws DuplicateElementException {
+		GameRepo gameRepo = new GameRepoImpl();
+		
 		Game game = new Game();
 		game.setName("hockey");
 		gameRepo.save(game);
@@ -52,16 +67,25 @@ public class GameRepoTest {
 
 	@Test(expected=NullPointerException.class)
 	public void test_findByName() {
+		GameRepo gameRepo = new GameRepoImpl();
+		
 		String gameName =null;
 		gameRepo.findByName(gameName);
 	}
 	
 	@Test
 	public void test_findByGamesName1() {
+		GameRepo gameRepo = new GameRepoImpl();
+		
 		Game game = new Game();
 		game.setName("hockey");
 		
-		gameRepo.save(game);
+		try {
+			gameRepo.save(game);
+		} catch (DuplicateElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		String GameName ="hockey";
 		Game g =gameRepo.findByName(GameName);
@@ -71,10 +95,17 @@ public class GameRepoTest {
 	
 	@Test
 	public void test_findByGamesName2() {
+		GameRepo gameRepo = new GameRepoImpl();
+		
 		Game game = new Game();
 		game.setName("hockey");
 		
-		gameRepo.save(game);
+		try {
+			gameRepo.save(game);
+		} catch (DuplicateElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		String GameName ="cricket";
 		Game g =gameRepo.findByName(GameName);
