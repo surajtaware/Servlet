@@ -2,6 +2,7 @@ package com.cg.repo.test;
 
 import static org.junit.Assert.*;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Before;
@@ -28,46 +29,24 @@ public class GameRepoTest {
 	
 	@Test(expected=NullPointerException.class)
 	public void test_save() {
-		GameRepo gameRepo = new GameRepoImpl();
+		GameRepo gameRepo = new GameRepoImpl(new HashSet<Game>());
 		
 		Game game = new Game();
-		try {
-			gameRepo.save(game);
-		} catch (DuplicateElementException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		gameRepo.save(game);
 	}
 	
 	@Test(expected=NullPointerException.class)
 	public void test_save1() {
-		GameRepo gameRepo = new GameRepoImpl();
+		GameRepo gameRepo = new GameRepoImpl(new HashSet<Game>());
 		Game game = null;		
-		try {
-			gameRepo.save(game);
-		} catch (DuplicateElementException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		gameRepo.save(game);
 	}
 	
-	@Test(expected=DuplicateElementException.class)
-	public void test_save2() throws DuplicateElementException {
-		GameRepo gameRepo = new GameRepoImpl();
-		
-		Game game = new Game();
-		game.setName("hockey");
-		gameRepo.save(game);
-		
-		Game game1 = new Game();
-		game1.setName("hockey");
-		gameRepo.save(game1);
-	}
 	
 
 	@Test(expected=NullPointerException.class)
 	public void test_findByName() {
-		GameRepo gameRepo = new GameRepoImpl();
+		GameRepo gameRepo = new GameRepoImpl(new HashSet<Game>());
 		
 		String gameName =null;
 		gameRepo.findByName(gameName);
@@ -75,17 +54,12 @@ public class GameRepoTest {
 	
 	@Test
 	public void test_findByGamesName1() {
-		GameRepo gameRepo = new GameRepoImpl();
+		GameRepo gameRepo = new GameRepoImpl(new HashSet<Game>());
 		
 		Game game = new Game();
 		game.setName("hockey");
 		
-		try {
-			gameRepo.save(game);
-		} catch (DuplicateElementException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		gameRepo.save(game);
 		
 		String GameName ="hockey";
 		Game g =gameRepo.findByName(GameName);
@@ -95,17 +69,12 @@ public class GameRepoTest {
 	
 	@Test
 	public void test_findByGamesName2() {
-		GameRepo gameRepo = new GameRepoImpl();
+		GameRepo gameRepo = new GameRepoImpl(new HashSet<Game>());
 		
 		Game game = new Game();
 		game.setName("hockey");
 		
-		try {
-			gameRepo.save(game);
-		} catch (DuplicateElementException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		gameRepo.save(game);
 		
 		String GameName ="cricket";
 		Game g =gameRepo.findByName(GameName);

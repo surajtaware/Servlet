@@ -10,8 +10,16 @@ import com.cg.exception.DuplicateElementException;
 
 public class DayRepoImpl implements DayRepo{
 
-	List<Day> days = new ArrayList<Day>();
+	List<Day> days ;
 	
+	
+	
+	public DayRepoImpl(List<Day> days) {
+		super();
+		this.days = days;
+	}
+
+
 	public Day save(Day day) throws DuplicateElementException {
 		if(day == null)
 			throw new NullPointerException();
@@ -56,6 +64,21 @@ public class DayRepoImpl implements DayRepo{
 		}
 		
 		return d1;
+	}
+
+
+	public Day findByName(String name) {
+		if(name == null)
+			throw new NullPointerException();
+				
+		for(Day g:days) {
+				
+				if(g.getName()==name)
+				return g;
+		}
+		
+		
+		return null;
 	}
 	
 	

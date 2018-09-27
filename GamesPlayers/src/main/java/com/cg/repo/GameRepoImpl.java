@@ -10,10 +10,13 @@ import com.cg.exception.DuplicateElementException;
 
 public class GameRepoImpl implements GameRepo {
 	
-	List<Game> games = new ArrayList<Game>();
-
-	
+	Set<Game> games;
 		
+	public GameRepoImpl(Set<Game> games) {
+		super();
+		this.games = games;
+	}
+
 	public Game findByName(String name) {
 		if(name == null)
 			throw new NullPointerException();
@@ -27,15 +30,13 @@ public class GameRepoImpl implements GameRepo {
 		return null;
 	}
 	
-	public Game save(Game game) throws DuplicateElementException {
+	public Game save(Game game)  {
 		if(game == null)
 			throw new NullPointerException();
 		if(game.getName()==null)
 			throw new NullPointerException();
 		
-		if(games.contains(game))
-			throw new DuplicateElementException("day object already present");
-		
+				
 		games.add(game);
 		
 		return game;

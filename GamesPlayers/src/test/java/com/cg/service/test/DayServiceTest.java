@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.cg.beans.Day;
+import com.cg.beans.Game;
 import com.cg.exception.DuplicateElementException;
 import com.cg.repo.DayRepo;
 import com.cg.service.DayService;
@@ -72,6 +73,19 @@ private DayService dayService;
 		e.printStackTrace();
 	}
 	} 
+	
+	@Test(expected=DuplicateElementException.class)
+	public void test_save_duplicate() throws DuplicateElementException {
+		Day day = new Day();
+		day.setName("1");
+		
+		
+			when(dayRepo.findByName(day.getName())).thenReturn(day);
+		
+		
+			dayService.add(day);
+		
+	}
 	
 
 }

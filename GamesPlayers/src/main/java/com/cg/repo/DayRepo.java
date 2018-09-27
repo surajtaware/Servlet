@@ -13,4 +13,6 @@ public interface DayRepo {
 	//public Day findByPlayerName(String playerName);
 	
 	public List<Day> findByGamesName(String gameName);
+
+	public Day findByName(String name);
 }

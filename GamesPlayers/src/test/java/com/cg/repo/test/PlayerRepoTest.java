@@ -2,6 +2,7 @@ package com.cg.repo.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -21,7 +22,7 @@ public class PlayerRepoTest {
 	@Before
 	public void init(){
 		
-		playerRepo = new PlayerRepoImpl();
+		playerRepo = new PlayerRepoImpl(new ArrayList<Player>());
 	}
 	
 	@Test(expected=NullPointerException.class)
@@ -46,17 +47,7 @@ public class PlayerRepoTest {
 		}
 	}
 	
-	@Test(expected=DuplicateElementException.class)
-	public void test_save2() throws DuplicateElementException {
-		Player player = new Player();
-		player.setName("vickey");
-		playerRepo.save(player);
 		
-		Player player1 = new Player();
-		player1.setName("vickey");
-		playerRepo.save(player1);
-	}
-	
 
 	@Test(expected=NullPointerException.class)
 	public void test_findByGamesName() {

@@ -3,9 +3,9 @@ package com.cg.repo.test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.cg.beans.Day;
@@ -26,7 +26,7 @@ public class DayRepoTest {
 	
 	@Test(expected=NullPointerException.class)
 	public void test_save() {
-		DayRepo dayRepo = new DayRepoImpl();
+		DayRepo dayRepo = new DayRepoImpl(new ArrayList<Day>());
 		Day day = new Day();
 		try {
 			dayRepo.save(day);
@@ -38,7 +38,7 @@ public class DayRepoTest {
 	
 	@Test(expected=NullPointerException.class)
 	public void test_save1() {
-		DayRepo dayRepo = new DayRepoImpl();
+		DayRepo dayRepo = new DayRepoImpl(new ArrayList<Day>());
 		Day day = null;		
 		try {
 			dayRepo.save(day);
@@ -50,7 +50,7 @@ public class DayRepoTest {
 	
 	@Test(expected=DuplicateElementException.class)
 	public void test_save2() throws DuplicateElementException {
-		DayRepo dayRepo = new DayRepoImpl();
+		DayRepo dayRepo = new DayRepoImpl(new ArrayList<Day>());
 		
 		Day day = new Day();
 		day.setName("hockey");		
@@ -64,14 +64,14 @@ public class DayRepoTest {
 
 	@Test(expected=NullPointerException.class)
 	public void test_findByGamesName() {
-		DayRepo dayRepo = new DayRepoImpl();
+		DayRepo dayRepo = new DayRepoImpl(new ArrayList<Day>());
 		String GameName =null;
 		dayRepo.findByGamesName(GameName);
 	}
 	
 	@Test
 	public void test_findByGamesName1() {
-		DayRepo dayRepo = new DayRepoImpl();
+		DayRepo dayRepo = new DayRepoImpl(new ArrayList<Day>());
 		Game game = new Game();
 		game.setName("hockey");
 		
@@ -94,7 +94,7 @@ public class DayRepoTest {
 	
 	@Test
 	public void test_findByGamesName2() {
-		DayRepo dayRepo = new DayRepoImpl();
+		DayRepo dayRepo = new DayRepoImpl(new ArrayList<Day>());
 		Game game = new Game();
 		game.setName("hockey");
 		

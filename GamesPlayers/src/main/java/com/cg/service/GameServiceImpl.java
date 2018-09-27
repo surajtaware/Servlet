@@ -18,10 +18,12 @@ public class GameServiceImpl implements GameService {
 
 
 	public Game add(Game game) throws DuplicateElementException {
-		if(game == null)
+		if(game == null || game.getName()==null)
 			throw new NullPointerException();
-		if(game.getName()==null)
-			throw new NullPointerException();
+		
+		Game g = gameRepoImpl.findByName(game.getName());
+		if(g!=null)
+			throw new DuplicateElementException("game already present");
 		
 		return gameRepoImpl.save(game);
 	}

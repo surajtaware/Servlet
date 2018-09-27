@@ -43,12 +43,7 @@ public class GameServiceTest {
 		Game game = new Game();
 		game.setName("hockey");
 		
-		try {
-			when(gameRepoImpl.save(game)).thenReturn(game);
-		} catch (DuplicateElementException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		when(gameRepoImpl.save(game)).thenReturn(game);
 		try {
 			gameService.add(game);
 		} catch (DuplicateElementException e) {
@@ -56,6 +51,20 @@ public class GameServiceTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test(expected=DuplicateElementException.class)
+	public void test_save_duplicate() throws DuplicateElementException {
+		Game game = new Game();
+		game.setName("hockey");
+		
+		
+			when(gameRepoImpl.findByName(game.getName())).thenReturn(game);
+		
+		
+			gameService.add(game);
+		
+	}
+	
 	
 	@Test(expected=NullPointerException.class)
 	public void test_save1() {

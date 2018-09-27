@@ -5,7 +5,7 @@ import com.cg.exception.DuplicateElementException;
 
 public interface GameRepo {
 
-	public Game save(Game game) throws DuplicateElementException;
+	public Game save(Game game);
 	
 	public Game findByName(String name);
 }

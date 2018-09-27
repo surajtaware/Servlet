@@ -11,18 +11,24 @@ import com.cg.exception.DuplicateElementException;
 
 public class PlayerRepoImpl implements PlayerRepo{
 	
-	List<Player> players = new ArrayList<Player>();
+	List<Player> players;	
+	
+	
+	public PlayerRepoImpl(List<Player> players) {
+		super();
+		this.players = players;
+	}
 
-	
-	
+
+
 	public Player save(Player player) throws DuplicateElementException {
 		if(player == null)
 			throw new NullPointerException();
 		if(player.getName()==null)
 			throw new NullPointerException();
 		
-		if(players.contains(player))
-			throw new DuplicateElementException("player object already present");
+		/*if(players.contains(player))
+			throw new DuplicateElementException("player object already present");*/
 		
 		players.add(player);
 		
