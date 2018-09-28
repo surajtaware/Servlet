@@ -1,7 +1,7 @@
 package com.cg.service;
 
 import com.cg.beans.Game;
-import com.cg.exception.DuplicateElementException;
+import com.cg.exception.DuplicateObjectException;
 import com.cg.repo.GameRepoImpl;
 
 public class GameServiceImpl implements GameService {
@@ -17,13 +17,13 @@ public class GameServiceImpl implements GameService {
 
 
 
-	public Game add(Game game) throws DuplicateElementException {
+	public Game add(Game game) throws DuplicateObjectException {
 		if(game == null || game.getName()==null)
 			throw new NullPointerException();
 		
 		Game g = gameRepoImpl.findByName(game.getName());
 		if(g!=null)
-			throw new DuplicateElementException("game already present");
+			throw new DuplicateObjectException("game present");
 		
 		return gameRepoImpl.save(game);
 	}

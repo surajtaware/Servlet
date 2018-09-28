@@ -8,7 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.cg.beans.Game;
-import com.cg.exception.DuplicateElementException;
+import com.cg.exception.DuplicateObjectException;
 import com.cg.repo.GameRepoImpl;
 import com.cg.service.GameService;
 import com.cg.service.GameServiceImpl;
@@ -32,7 +32,7 @@ public class GameServiceTest {
 		Game game = new Game();
 		try {
 			gameService.add(game);
-		} catch (DuplicateElementException e) {
+		} catch (DuplicateObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -41,21 +41,21 @@ public class GameServiceTest {
 	@Test
 	public void test_save_success() {
 		Game game = new Game();
-		game.setName("hockey");
+		game.setName("kho-kho");
 		
 		when(gameRepoImpl.save(game)).thenReturn(game);
 		try {
 			gameService.add(game);
-		} catch (DuplicateElementException e) {
+		} catch (DuplicateObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	@Test(expected=DuplicateElementException.class)
-	public void test_save_duplicate() throws DuplicateElementException {
+	@Test(expected=DuplicateObjectException.class)
+	public void test_save_duplicate() throws DuplicateObjectException {
 		Game game = new Game();
-		game.setName("hockey");
+		game.setName("kho-kho");
 		
 		
 			when(gameRepoImpl.findByName(game.getName())).thenReturn(game);
@@ -71,7 +71,7 @@ public class GameServiceTest {
 		Game game = null;		
 		try {
 			gameService.add(game);
-		} catch (DuplicateElementException e) {
+		} catch (DuplicateObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

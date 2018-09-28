@@ -6,7 +6,7 @@ import java.util.Set;
 
 import com.cg.beans.Day;
 import com.cg.beans.Game;
-import com.cg.exception.DuplicateElementException;
+import com.cg.exception.DuplicateObjectException;
 
 public class GameRepoImpl implements GameRepo {
 	

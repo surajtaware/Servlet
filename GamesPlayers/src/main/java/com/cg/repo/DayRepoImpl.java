@@ -6,7 +6,8 @@ import java.util.Set;
 
 import com.cg.beans.Day;
 import com.cg.beans.Game;
-import com.cg.exception.DuplicateElementException;
+
+import com.cg.exception.DuplicateObjectException;
 
 public class DayRepoImpl implements DayRepo{
 
@@ -20,14 +21,14 @@ public class DayRepoImpl implements DayRepo{
 	}
 
 
-	public Day save(Day day) throws DuplicateElementException {
+	public Day save(Day day) throws DuplicateObjectException {
 		if(day == null)
 			throw new NullPointerException();
 		if(day.getName()==null)
 			throw new NullPointerException();
 		
 		if(days.contains(day))
-			throw new DuplicateElementException("day object already present");
+			throw new DuplicateObjectException("day present");
 		
 		days.add(day);
 		
@@ -56,8 +57,7 @@ public class DayRepoImpl implements DayRepo{
 				
 				if(sname==gameName)
 				{
-					//System.out.println("first : "+sname);
-					//System.out.println("second :"+gameName);
+					
 					d1.add(d);
 				}
 			}

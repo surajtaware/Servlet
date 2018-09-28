@@ -7,7 +7,8 @@ import java.util.Set;
 import com.cg.beans.Day;
 import com.cg.beans.Game;
 import com.cg.beans.Player;
-import com.cg.exception.DuplicateElementException;
+
+import com.cg.exception.DuplicateObjectException;
 
 public class PlayerRepoImpl implements PlayerRepo{
 	
@@ -21,14 +22,13 @@ public class PlayerRepoImpl implements PlayerRepo{
 
 
 
-	public Player save(Player player) throws DuplicateElementException {
+	public Player save(Player player) throws DuplicateObjectException {
 		if(player == null)
 			throw new NullPointerException();
 		if(player.getName()==null)
 			throw new NullPointerException();
 		
-		/*if(players.contains(player))
-			throw new DuplicateElementException("player object already present");*/
+		
 		
 		players.add(player);
 		

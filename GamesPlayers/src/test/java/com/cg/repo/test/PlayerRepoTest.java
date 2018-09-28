@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.cg.beans.Game;
 import com.cg.beans.Player;
-import com.cg.exception.DuplicateElementException;
+import com.cg.exception.DuplicateObjectException;
 import com.cg.repo.PlayerRepo;
 import com.cg.repo.PlayerRepoImpl;
 
@@ -30,7 +30,7 @@ public class PlayerRepoTest {
 		Player player = new Player();
 		try {
 			playerRepo.save(player);
-		} catch (DuplicateElementException e) {
+		} catch (DuplicateObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -41,7 +41,7 @@ public class PlayerRepoTest {
 		Player player = null;		
 		try {
 			playerRepo.save(player);
-		} catch (DuplicateElementException e) {
+		} catch (DuplicateObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -58,20 +58,20 @@ public class PlayerRepoTest {
 	@Test
 	public void test_findByGamesName1() {
 		Game game = new Game();
-		game.setName("hockey");
+		game.setName("kho-kho");
 		
 		Player player = new Player();
-		player.setName("vickey");
+		player.setName("vijay");
 		player.setGame(game);
 		
 		try {
 			playerRepo.save(player);
-		} catch (DuplicateElementException e) {
+		} catch (DuplicateObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		String GameName ="hockey";
+		String GameName ="kho-kho";
 		List<Player> players=playerRepo.findByGamesName(GameName);
 	
 		assertFalse(players.isEmpty());
@@ -80,15 +80,15 @@ public class PlayerRepoTest {
 	@Test
 	public void test_findByGamesName2() {
 		Game game = new Game();
-		game.setName("hockey");
+		game.setName("kho-kho");
 		
 		Player player = new Player();
-		player.setName("vickey");
+		player.setName("vijay");
 		player.setGame(game);
 		
 		try {
 			playerRepo.save(player);
-		} catch (DuplicateElementException e) {
+		} catch (DuplicateObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

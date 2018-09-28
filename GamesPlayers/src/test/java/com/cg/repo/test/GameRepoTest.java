@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.cg.beans.Game;
 import com.cg.beans.Player;
-import com.cg.exception.DuplicateElementException;
+import com.cg.exception.DuplicateObjectException;
 import com.cg.repo.GameRepo;
 import com.cg.repo.GameRepoImpl;
 import com.cg.repo.PlayerRepo;
@@ -57,14 +57,14 @@ public class GameRepoTest {
 		GameRepo gameRepo = new GameRepoImpl(new HashSet<Game>());
 		
 		Game game = new Game();
-		game.setName("hockey");
+		game.setName("kho-kho");
 		
 		gameRepo.save(game);
 		
-		String GameName ="hockey";
+		String GameName ="kho-kho";
 		Game g =gameRepo.findByName(GameName);
 	
-		assertTrue("hockey".equals(g.getName()));
+		assertTrue("kho-kho".equals(g.getName()));
 	}
 	
 	@Test
@@ -72,7 +72,7 @@ public class GameRepoTest {
 		GameRepo gameRepo = new GameRepoImpl(new HashSet<Game>());
 		
 		Game game = new Game();
-		game.setName("hockey");
+		game.setName("kho-kho");
 		
 		gameRepo.save(game);
 		

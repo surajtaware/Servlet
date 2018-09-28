@@ -9,7 +9,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.cg.beans.Day;
 import com.cg.beans.Game;
-import com.cg.exception.DuplicateElementException;
+import com.cg.exception.DuplicateObjectException;
 import com.cg.repo.DayRepo;
 import com.cg.service.DayService;
 import com.cg.service.DayServiceImpl;
@@ -34,7 +34,7 @@ private DayService dayService;
 	Day day = new Day();
 	try {
 		dayService.add(day);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
@@ -48,7 +48,7 @@ private DayService dayService;
 	day.setName(null);
 	try {
 		dayService.add(day);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
@@ -62,20 +62,20 @@ private DayService dayService;
 	day.setName("Day1");
 	try {
 		when(dayRepo.save(day)).thenReturn(day);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	try {
 		dayService.add(day);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	} 
 	
-	@Test(expected=DuplicateElementException.class)
-	public void test_save_duplicate() throws DuplicateElementException {
+	@Test(expected=DuplicateObjectException.class)
+	public void test_save_duplicate() throws DuplicateObjectException {
 		Day day = new Day();
 		day.setName("1");
 		

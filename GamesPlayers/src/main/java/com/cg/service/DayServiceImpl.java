@@ -2,7 +2,7 @@ package com.cg.service;
 
 import com.cg.beans.Day;
 import com.cg.beans.Game;
-import com.cg.exception.DuplicateElementException;
+import com.cg.exception.DuplicateObjectException;
 import com.cg.repo.DayRepo;
 
 public class DayServiceImpl implements DayService{
@@ -15,7 +15,7 @@ public class DayServiceImpl implements DayService{
 	
 	}
 	
-	public Day add(Day day) throws DuplicateElementException {
+	public Day add(Day day) throws DuplicateObjectException {
 		if(day == null || day.getName()==null)
 		{
 		throw new NullPointerException();
@@ -23,7 +23,7 @@ public class DayServiceImpl implements DayService{
 		
 		Day g = dayRepo.findByName(day.getName());
 		if(g!=null)
-			throw new DuplicateElementException("day already present");
+			throw new DuplicateObjectException("day present");
 		return dayRepo.save(day);
 	}
 

@@ -1,7 +1,7 @@
 package com.cg.repo;
 
 import com.cg.beans.Game;
-import com.cg.exception.DuplicateElementException;
+import com.cg.exception.DuplicateObjectException;
 
 public interface GameRepo {
 

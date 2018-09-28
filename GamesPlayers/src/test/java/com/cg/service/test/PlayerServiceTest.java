@@ -10,7 +10,7 @@ import org.omg.CORBA.portable.ApplicationException;
 
 import com.cg.beans.Game;
 import com.cg.beans.Player;
-import com.cg.exception.DuplicateElementException;
+import com.cg.exception.DuplicateObjectException;
 import com.cg.repo.PlayerRepo;
 import com.cg.service.PlayerService;
 import com.cg.service.PlayerServiceImpl;
@@ -35,7 +35,7 @@ private PlayerService playerService;
 	Player player = new Player();
 	try {
 		playerService.add(player);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
@@ -49,7 +49,7 @@ private PlayerService playerService;
 	player.setName(null);
 	try {
 		playerService.add(player);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
@@ -60,20 +60,20 @@ private PlayerService playerService;
 	public void test_save_validPlayerDetails() throws ApplicationException {
 	
 	Player player = new Player();
-	player.setName("Virat Kholi");
+	player.setName("Virat");
 	Game game = new Game();
 	game.setName("Cricket");
 	game.setNoOfPlayers((byte) 11);
 	player.setGame(game);
 	try {
 		when(playerRepo.save(player)).thenReturn(player);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	try {
 		playerService.add(player);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
@@ -84,17 +84,17 @@ private PlayerService playerService;
 	public void test_save_playerRequiredAtLeastOneGame()  {
 	
 	Player player = new Player();
-	player.setName("Virat Kholi");
+	player.setName("Virat");
 	//player.setGame(null);
 	try {
 		when(playerRepo.save(player)).thenReturn(player);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	try {
 		playerService.add(player);
-	} catch (DuplicateElementException e) {
+	} catch (DuplicateObjectException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
